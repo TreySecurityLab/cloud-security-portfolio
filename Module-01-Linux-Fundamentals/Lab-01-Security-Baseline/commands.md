@@ -1,6 +1,6 @@
-# Lab 01 Commands
+# Security Baseline Commands
 
-## Ubuntu Server Commands
+## Ubuntu Server
 
 ### Display the hostname
 
@@ -10,8 +10,6 @@ hostname
 
 - `hostname` — Displays the system's configured hostname.
 
-Expected result: `ubuntu-server`
-
 ### Display the current user
 
 ```bash
@@ -19,8 +17,6 @@ whoami
 ```
 
 - `whoami` — Displays the username associated with the current shell.
-
-Expected result: `testlab`
 
 ### Display IP addresses
 
@@ -31,8 +27,6 @@ ip address show
 - `ip` — Linux networking utility.
 - `address` — Selects IP address information.
 - `show` — Displays the current configuration.
-
-Expected Ubuntu IP: `192.168.50.129`
 
 ### Display listening TCP and UDP sockets
 
@@ -56,7 +50,7 @@ sudo systemctl status apache2 --no-pager
 
 - `systemctl` — Manages and inspects systemd services.
 - `status` — Shows the current service state.
-- `apache2` — Ubuntu's Apache service name.
+- `apache2` — Ubuntu's Apache service.
 - `--no-pager` — Prints output directly.
 
 ### Review SSH
@@ -86,10 +80,10 @@ sudo grep -Ei "accepted|failed|invalid" /var/log/auth.log
 - `grep` — Searches text.
 - `-E` — Enables extended regular expressions.
 - `-i` — Ignores letter case.
-- `accepted|failed|invalid` — Matches any of the three patterns.
+- `accepted|failed|invalid` — Matches any listed pattern.
 - `/var/log/auth.log` — Ubuntu authentication log.
 
-## Kali Commands
+## Kali Linux
 
 ### Test connectivity
 
@@ -98,8 +92,7 @@ ping -c 4 192.168.50.129
 ```
 
 - `ping` — Sends ICMP Echo Requests.
-- `-c` — Sets the packet count.
-- `4` — Sends four packets.
+- `-c 4` — Sends four packets.
 - `192.168.50.129` — Ubuntu Server target.
 
 ### Perform a default scan

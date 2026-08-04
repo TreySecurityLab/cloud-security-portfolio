@@ -1,6 +1,6 @@
 # Cloud Security Portfolio
 
-This repository documents a structured, hands-on Cloud Security training curriculum built around Linux security, networking, offensive security, detection, forensics, Azure, Microsoft Defender, Microsoft Sentinel, and incident response.
+This repository documents a structured, hands-on Cloud Security Academy focused on Linux security, networking, offensive security, detection, forensics, Azure, Microsoft Defender, Microsoft Sentinel, and incident response.
 
 ## Lab Environment
 
@@ -30,5 +30,4 @@ This repository documents a structured, hands-on Cloud Security training curricu
 
 - [x] Lab 01 — Security Baseline
 - [x] Lab 02 — File Permissions and Integrity
-- [ ] Lab 03 — Linux File System Investigation
-
+- [x] Lab 03 — Linux File System Investigation

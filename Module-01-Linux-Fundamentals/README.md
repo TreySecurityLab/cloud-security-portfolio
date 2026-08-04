@@ -8,7 +8,8 @@ This module establishes the Linux knowledge required for Cloud Security administ
 - Interpret Linux services and listening ports
 - Understand file permissions and ownership
 - Detect file modification using cryptographic hashes
-- Navigate and search the Linux file system
+- Navigate and investigate the Linux file system
+- Search files and file contents efficiently
 - Review processes and system logs
 - Combine foundational skills in a capstone investigation
 
@@ -16,7 +17,7 @@ This module establishes the Linux knowledge required for Cloud Security administ
 
 - [Lab 01 — Security Baseline](Lab-01-Security-Baseline/)
 - [Lab 02 — File Permissions and Integrity](Lab-02-File-Permissions-and-Integrity/)
-- Lab 03 — Linux File System Investigation
+- [Lab 03 — Linux File System Investigation](Lab-03-Linux-File-System-Investigation/)
 - Lab 04 — Find and Grep
 - Lab 05 — Linux Processes
 - Lab 06 — System Logs

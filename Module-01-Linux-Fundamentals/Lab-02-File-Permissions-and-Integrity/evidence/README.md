@@ -1,4 +1,4 @@
-# Lab 02 Evidence
+# File Permissions and Integrity Evidence
 
 Recommended evidence files:
 
@@ -11,4 +11,4 @@ Recommended evidence files:
 - `restored-integrity-check.txt`
 - `final-file-metadata.txt`
 
-Do not place real passwords, API keys, tokens, or secrets in this directory.
+Do not place real passwords, API keys, tokens, private keys, or production secrets in this directory.

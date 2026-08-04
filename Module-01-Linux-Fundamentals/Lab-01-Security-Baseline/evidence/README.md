@@ -1,4 +1,4 @@
-# Lab 01 Evidence
+# Security Baseline Evidence
 
 Add sanitized command output files here.
 
@@ -15,4 +15,4 @@ Recommended files:
 - `nmap-service-scan.txt`
 - `authentication-events.txt`
 
-Do not upload passwords, keys, tokens, sensitive usernames, or public home IP addresses.
+Do not upload passwords, keys, tokens, sensitive usernames, public home IP addresses, or unsanitized logs.

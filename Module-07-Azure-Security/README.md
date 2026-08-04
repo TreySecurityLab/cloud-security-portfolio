@@ -1,5 +1,5 @@
-# 07 Azure Security
+# Module 07 — Azure Security
 
 This module is reserved for future Cloud Security Academy labs.
 
-Its detailed curriculum, progress tracker, labs, commands, evidence guidance, and screenshot requirements will be added as the course progresses.
+Detailed lessons, commands, evidence guidance, and screenshot requirements will be added as the course progresses.

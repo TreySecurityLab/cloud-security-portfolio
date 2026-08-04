@@ -1,6 +1,4 @@
-# Lab 01 Screenshot Checklist
-
-Add these screenshots after completing the lab:
+# Security Baseline Screenshot Checklist
 
 1. `01-ubuntu-hostname-and-user.png`
 2. `02-ubuntu-ip-address.png`

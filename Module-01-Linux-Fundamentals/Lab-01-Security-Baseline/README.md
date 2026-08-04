@@ -1,10 +1,10 @@
 # Security Baseline
 
-## Objective
+## Project Overview
 
-Establish a known-good security baseline for `testlab@ubuntu-server` at `192.168.50.129` and compare its local state with the services visible remotely from `treyc@kali-attacker` at `192.168.50.1`.
+This lab established a known-good security baseline for an Ubuntu Server and compared the server's local state with the services visible remotely from Kali Linux.
 
-## Environment
+## Lab Environment
 
 | System | Identity | IP Address | Role |
 |---|---|---|---|
@@ -14,9 +14,17 @@ Establish a known-good security baseline for `testlab@ubuntu-server` at `192.168
 
 **VMware network:** `Host-only`
 
-## Lab Summary
+## Objective
 
-The following activities were completed:
+- Confirm system identity and addressing.
+- Review listening TCP and UDP sockets.
+- Inspect expected services.
+- Review the host firewall.
+- Compare local listening ports with remotely reachable services.
+- Review authentication activity.
+- Preserve evidence for later comparison.
+
+## Hands-on Lab
 
 1. Verified the Ubuntu hostname and current user.
 2. Identified the Ubuntu Server IP address.
@@ -28,6 +36,10 @@ The following activities were completed:
 8. Reviewed authentication activity.
 9. Compared the local and remote views of the server.
 
+## Commands Used
+
+The complete command reference is available in [`commands.md`](commands.md).
+
 ## Key Findings
 
 - SSH and Apache were expected services.
@@ -35,16 +47,16 @@ The following activities were completed:
 - A locally listening port may not be remotely reachable.
 - A known-good baseline provides a comparison point for future investigations.
 
-## Cloud Security Relevance
+## Why This Matters in Cloud Security
 
 The same baseline process applies to cloud-hosted Linux virtual machines:
 
-- Identify expected services
-- Confirm allowed network exposure
-- Review firewall and security-group rules
-- Monitor authentication activity
-- Detect unexpected changes
-- Document evidence for investigations
+- Identify expected services.
+- Confirm allowed network exposure.
+- Review firewall and security-group rules.
+- Monitor authentication activity.
+- Detect unexpected changes.
+- Document evidence for investigations.
 
 ## Skills Demonstrated
 
@@ -68,3 +80,18 @@ The same baseline process applies to cloud-hosted Linux virtual machines:
 - UFW
 - Nmap
 - systemd
+
+## Evidence Collected
+
+Evidence guidance is available in [`evidence/README.md`](evidence/README.md).
+
+## Screenshots
+
+The screenshot checklist is available in [`screenshots/README.md`](screenshots/README.md).
+
+## Lessons Learned
+
+- Local and remote service views answer different security questions.
+- Firewall policy affects whether a listening service is reachable.
+- Service state and boot enablement are separate properties.
+- Baselines support later change detection and incident investigation.

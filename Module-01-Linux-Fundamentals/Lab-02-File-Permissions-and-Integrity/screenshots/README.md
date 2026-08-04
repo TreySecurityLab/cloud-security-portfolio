@@ -1,6 +1,4 @@
-# Lab 02 Screenshot Checklist
-
-Add these screenshots:
+# File Permissions and Integrity Screenshot Checklist
 
 1. `01-lab-workspace.png`
 2. `02-original-file-permissions.png`

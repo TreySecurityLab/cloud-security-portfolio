@@ -19,7 +19,7 @@ Thumbs.db
 secrets/
 private/
 
-# Large packet captures should be reviewed before committing
+# Packet captures must be reviewed before committing
 *.pcap
 *.pcapng
 
@@ -27,3 +27,6 @@ private/
 *.zip
 *.tar
 *.tar.gz
+
+# Local backups
+*-backups/

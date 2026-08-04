@@ -1,4 +1,5 @@
-Repository created: /home/treyc/cloud-security-portfolio
+Repository updated: /home/treyc/cloud-security-portfolio
+Update completed: 2026-08-04T18:37:37-05:00
 
 Lab environment:
 - VMware network: Host-only
@@ -9,9 +10,6 @@ Lab environment:
 Completed lab folders:
 - Module-01-Linux-Fundamentals/Lab-01-Security-Baseline
 - Module-01-Linux-Fundamentals/Lab-02-File-Permissions-and-Integrity
+- Module-01-Linux-Fundamentals/Lab-03-Linux-File-System-Investigation
 
-Next manual steps:
-1. Add screenshots.
-2. Add sanitized evidence files.
-3. Initialize Git if needed.
-4. Commit and push to GitHub.
+Existing screenshots, evidence files, Git history, and unrelated repository content were preserved.

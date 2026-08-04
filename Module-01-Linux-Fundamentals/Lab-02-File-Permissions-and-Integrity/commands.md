@@ -1,4 +1,4 @@
-# Lab 02 Commands
+# File Permissions and Integrity Commands
 
 ### Create the workspace
 
@@ -8,7 +8,6 @@ mkdir -p /home/testlab/cloud-security-labs/lab-02-file-integrity
 
 - `mkdir` — Creates directories.
 - `-p` — Creates missing parent directories and avoids errors if they already exist.
-- `/home/testlab/cloud-security-labs/lab-02-file-integrity` — Destination path.
 
 ### Enter the workspace
 
@@ -62,7 +61,6 @@ sha256sum application.conf > application.conf.sha256
 
 - `sha256sum` — Calculates a SHA-256 hash.
 - `>` — Writes the result to a file.
-- `application.conf.sha256` — Baseline checksum file.
 
 ### Verify the baseline
 
