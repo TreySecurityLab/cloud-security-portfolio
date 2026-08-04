@@ -1,0 +1,29 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*.tmp
+*~
+
+# Sensitive material
+*.pem
+*.key
+*.pfx
+*.p12
+*.kdbx
+.env
+.env.*
+secrets/
+private/
+
+# Large packet captures should be reviewed before committing
+*.pcap
+*.pcapng
+
+# Archives
+*.zip
+*.tar
+*.tar.gz

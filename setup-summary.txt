@@ -1,0 +1,17 @@
+Repository created: /home/treyc/cloud-security-portfolio
+
+Lab environment:
+- VMware network: Host-only
+- Kali: treyc@kali-attacker (192.168.50.1)
+- Ubuntu: testlab@ubuntu-server (192.168.50.129)
+- Windows 11: testlab@Win11-VM (192.168.50.128)
+
+Completed lab folders:
+- Module-01-Linux-Fundamentals/Lab-01-Security-Baseline
+- Module-01-Linux-Fundamentals/Lab-02-File-Permissions-and-Integrity
+
+Next manual steps:
+1. Add screenshots.
+2. Add sanitized evidence files.
+3. Initialize Git if needed.
+4. Commit and push to GitHub.
