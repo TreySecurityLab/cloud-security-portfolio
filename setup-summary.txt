@@ -1,5 +1,5 @@
 Repository updated: /home/treyc/cloud-security-portfolio
-Update completed: 2026-08-05T21:25:47-05:00
+Update completed: 2026-08-05T21:28:52-05:00
 
 Lab environment:
 - VMware network: Host-only
@@ -12,5 +12,6 @@ Completed lab folders:
 - Module-01-Linux-Fundamentals/Lab-02-File-Permissions-and-Integrity
 - Module-01-Linux-Fundamentals/Lab-03-Linux-File-System-Investigation
 - Module-01-Linux-Fundamentals/Lab-04-Find-and-Grep
+- Module-01-Linux-Fundamentals/Lab-05-Linux-Processes
 
 Existing screenshots, evidence files, Git history, and unrelated repository content were preserved.
