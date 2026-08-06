@@ -1,207 +1,80 @@
 # Linux Processes
 
-## Project Overview
+## Project Summary
 
-This lab documents a controlled Linux process investigation performed on an Ubuntu Server. The investigation examined process IDs, parent-child relationships, ownership, states, process trees, foreground and background jobs, process discovery, `/proc` data, signals, safe termination, process priority, systemd services, listening network ports, and misleading process arguments.
+This project documents a controlled Linux process investigation on an Ubuntu Server. The work focused on process discovery, parent-child relationships, ownership, states, scheduling priority, `/proc` validation, network-listener attribution, systemd correlation, signal handling, and evidence integrity.
 
-The lab used only controlled training processes created during the exercise. No discovered or untrusted script, binary, command, or file was executed.
+The scenario included a process whose displayed argument was intentionally changed to `system-update-agent`, a local Python HTTP listener on TCP port `8085`, and an independent challenge using `cloud-sync-helper` with TCP port `9095`. Only controlled training processes were created and examined; no discovered or untrusted content was executed.
 
-## Lab Environment
+## Environment
 
 | System | Hostname | Username | IP Address | Role |
 |---|---|---|---|---|
 | Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Process-investigation target |
 
-**Virtualization platform:** VMware Workstation Pro  
-**VMware network:** Host-only
+**Platform:** VMware Workstation Pro using a host-only network
 
-## Objective
+## Investigation Scenario
 
-- Explain Linux process concepts and terminology.
-- Identify PIDs, PPIDs, owners, states, priorities, commands, and arguments.
-- Reconstruct process ancestry using process trees and parent records.
-- Manage controlled foreground and background jobs.
-- Discover processes with `ps`, `pgrep`, `jobs`, and `top`.
-- Inspect live process data through `/proc`.
-- Associate processes with listening network sockets.
-- Correlate systemd services with their main processes.
-- Use signals to suspend, resume, and terminate controlled processes safely.
-- Analyze a process whose displayed argument differs from its executable.
-- Collect, review, hash, and verify investigation evidence.
+The investigation was designed to answer five practical questions:
 
-## Hands-on Lab
+1. Which processes were associated with the controlled activity?
+2. What were their owners, states, priorities, parents, and full arguments?
+3. Did a displayed process label match the executable actually running?
+4. Which process owned each local listening port?
+5. Could the findings be documented and verified without treating a process name alone as proof of malicious activity?
 
-1. Created an organized process-investigation workspace.
-2. Identified the current Bash PID and PPID.
-3. Compared `ps -ef`, `ps aux`, and custom `ps -o` output.
-4. Captured a system-wide process snapshot.
-5. Summarized primary process states.
-6. Reviewed user-owned and root-owned processes.
-7. Captured and analyzed a process tree.
-8. Practiced foreground and background job control.
-9. Created controlled sleep, custom-named, HTTP-listener, and lower-priority processes.
-10. Recorded process IDs in PID files.
-11. Discovered processes using short-name and full-command-line searches.
-12. Investigated ownership, state, start time, elapsed time, parentage, and arguments.
-13. Inspected `/proc/<PID>/status`, `cmdline`, `exe`, `cwd`, and `fd`.
-14. Suspended and resumed a controlled process using signals.
-15. Correlated TCP port `8085` with its Python process.
-16. Captured a noninteractive `top` snapshot.
-17. Started and adjusted a controlled lower-priority process.
-18. Correlated the SSH systemd service with its main process.
-19. Used `kill -0` to verify process existence without sending a terminating signal.
-20. Requested graceful termination using `SIGTERM`.
-21. Hashed the executable associated with the custom-named process.
-22. Captured listening TCP process evidence.
-23. Documented main investigation findings.
-24. Created and verified an initial checksum baseline.
-25. Completed a challenge involving `cloud-sync-helper` and TCP port `9095`.
-26. Wrote an assessment separating facts, indicators, false positives, and unknowns.
-27. Recreated and verified the final evidence checksum list.
-28. Cleaned up only the controlled training processes.
+## Investigation Workflow
 
-## Commands Used
-
-The complete command reference and command breakdowns are documented in [`commands.md`](commands.md).
-
-Primary tools and interfaces included:
-
-- `ps`
-- `pgrep`
-- `jobs`
-- `fg`
-- `bg`
-- `kill`
-- `wait`
-- `top`
-- `nice`
-- `renice`
-- `systemctl`
-- `ss`
-- `curl`
-- `readlink`
-- `/proc`
-- `sha256sum`
+1. Captured a process overview and parent-child process tree.
+2. Located the controlled processes with `pgrep` and focused `ps` queries.
+3. Inspected `/proc/<PID>/status`, `cmdline`, `exe`, `cwd`, and `fd`.
+4. Suspended and resumed a controlled process with `SIGSTOP` and `SIGCONT`.
+5. Correlated TCP port `8085` with its Python HTTP-server process.
+6. Reviewed and adjusted a controlled process's nice value.
+7. Correlated the SSH systemd service with its main PID.
+8. Completed a separate process-and-listener attribution challenge on TCP port `9095`.
+9. Documented the assessment and verified published artifacts with SHA-256 checksums.
 
 ## Key Findings
 
-1. A process has a PID, parent PID, owner, state, priority, executable name, and command line.
-2. Process ownership defines the security context under which the process operates.
-3. Parent-child relationships provide execution context and can reveal suspicious ancestry.
-4. Shell job numbers are not the same as system process IDs.
-5. `jobs` shows jobs managed by the current shell, while `ps` provides system process visibility.
-6. The controlled `system-update-agent` process displayed a custom argument but used the real `sleep` executable.
-7. `/proc/<PID>/exe` provided stronger executable evidence than the displayed argument.
-8. `/proc/<PID>/cmdline` showed null-separated arguments and required safe formatting for review.
-9. `/proc/<PID>/cwd` identified the process working directory.
-10. `/proc/<PID>/fd` exposed the process's open file descriptors.
-11. `SIGSTOP` changed the controlled process state to stopped, and `SIGCONT` resumed it.
-12. `SIGTERM` successfully requested graceful termination of controlled processes.
-13. The controlled Python process owned the listener on `127.0.0.1:8085`.
-14. A larger nice value reduced a controlled process's scheduling preference.
-15. The SSH service properties connected systemd management information to a main PID.
-16. Process arguments, socket listings, and `/proc` data may contain sensitive information.
-17. A process name or command-line label alone is not sufficient to classify activity as malicious.
-18. Evidence checksums had to be recreated after challenge evidence was added.
+- The `system-update-agent` label appeared in the process arguments, while `/proc/<PID>/exe` resolved to the legitimate `sleep` executable.
+- Process arguments can be useful investigative clues, but they can also be changed and must be validated against stronger evidence.
+- Parent PID, owner, state, start time, elapsed time, executable path, working directory, and open descriptors provided necessary context.
+- `SIGSTOP` moved the controlled process into a stopped state beginning with `T`; `SIGCONT` returned it to a runnable or sleeping state.
+- The Python HTTP-server process owned the listener on `127.0.0.1:8085`.
+- A larger nice value reduced the controlled process's scheduling preference.
+- systemd properties connected the SSH service definition to its active main PID.
+- The challenge reinforced that a suspicious-looking name is not sufficient to classify a process as malicious.
 
-## Why This Matters in Cloud Security
+## Selected Commands
 
-Linux processes represent active behavior on cloud workloads. Process analysis can reveal:
+The concise command reference is available in [`commands.md`](commands.md). It contains the commands that best demonstrate process triage, executable validation, signal handling, socket attribution, service correlation, priority analysis, and checksum verification.
 
-- Unexpected interpreters or shells
-- Unauthorized network listeners
-- Cryptominers
-- Reverse shells
-- Credential-access tools
-- Persistence agents
-- Downloaders
-- Tunneling utilities
-- Data-staging processes
-- Processes disguised as legitimate services
-- Unexpected privileged execution
-- Workloads consuming abnormal CPU or memory
+## Evidence
 
-Reliable conclusions require correlation of ownership, ancestry, executable paths, arguments, working directories, open files, sockets, service relationships, hashes, timing, and business purpose.
+Published evidence belongs in [`evidence/`](evidence/). The core public evidence set includes an investigation report and SHA-256 checksum manifest. Additional sanitized artifacts may be added when they strengthen the documented findings.
 
-## Skills Demonstrated
+Recommended evidence set:
 
-- Linux process triage
-- PID and PPID analysis
-- Process ownership analysis
-- Process-state interpretation
-- Process-tree reconstruction
-- Foreground and background job control
-- Process discovery
-- Full-command-line searching
-- `/proc` investigation
-- Executable-path validation
-- Open-file-descriptor review
-- Linux signal handling
-- Safe process termination
-- Nice-value and priority analysis
-- systemd service correlation
-- Network-listener attribution
-- Suspicious-process analysis
-- False-positive analysis
-- Evidence collection
-- Evidence-integrity verification
-- Investigation assessment writing
+- `process-tree.txt`
+- `process-analysis.txt`
+- `listener-attribution.txt`
+- `service-and-priority-analysis.txt`
+- `challenge-analysis.txt`
+- `investigation-report.md`
+- `evidence-checksums.sha256`
 
-## Technologies Used
-
-- Ubuntu Server
-- VMware Workstation Pro
-- Bash
-- procps-ng
-- systemd
-- iproute2 `ss`
-- Python 3 HTTP server
-- GNU coreutils
-- SHA-256
-
-## Evidence Collected
-
-Evidence guidance is available in [`evidence/README.md`](evidence/README.md).
-
-Recommended evidence includes:
-
-- Current shell process details
-- System process snapshot
-- Process-state summary
-- Process tree
-- Custom-named process summary and parent
-- `/proc` status, command line, executable, and working directory
-- Network-listener attribution
-- HTTP process and file descriptors
-- Resource and priority snapshots
-- SSH service properties
-- Executable hash
-- Listening TCP process inventory
-- Main investigation findings
-- Challenge process and listener evidence
-- Challenge assessment
-- Final evidence checksums
+Before publication, evidence must be reviewed for credentials, tokens, cookies, sensitive paths, unrelated processes, and unnecessary network information.
 
 ## Screenshots
 
-The complete screenshot checklist is available in [`screenshots/README.md`](screenshots/README.md).
+Selected screenshots belong in [`screenshots/`](screenshots/). Strong screenshots should show the process tree, focused suspect metadata, executable validation, stopped and resumed states, listener attribution, service correlation, challenge assessment, and final checksum verification.
 
-## Lessons Learned
+## Skills Demonstrated
 
-- A stored program becomes a process when Linux runs it.
-- PIDs identify processes; PPIDs identify the processes that created them.
-- Ownership determines process permissions and access.
-- Process state is context, not proof of malicious activity.
-- A process tree can reveal abnormal execution ancestry.
-- Shell jobs and system processes are related but distinct concepts.
-- Full command lines can be useful and misleading.
-- Process arguments can be manipulated.
-- `/proc/<PID>/exe` helps validate the actual executable.
-- `/proc` data disappears when the process exits.
-- `SIGTERM` should normally precede forced termination.
-- Unknown production processes should not be stopped without validation and authorization.
-- A listening port must be connected to a PID, owner, executable, service, and purpose.
-- Nice values influence scheduling preference but do not directly indicate maliciousness.
-- A systemd service may manage one main process and additional child processes.
-- Evidence containing commands, sockets, paths, or usernames must be sanitized before publication.
-- Checksums must be recreated whenever evidence files are added or modified.
+Linux process triage, PID and PPID analysis, process-state interpretation, `/proc` investigation, executable-path validation, process-tree reconstruction, signal handling, safe process control, priority analysis, systemd correlation, network-listener attribution, false-positive analysis, evidence documentation, and SHA-256 integrity verification.
+
+## Security Relevance
+
+Linux process analysis helps investigate unexpected interpreters, reverse shells, cryptominers, unauthorized listeners, persistence agents, tunneling utilities, credential-access tools, and processes disguised as legitimate services. Reliable conclusions require correlation across process identity, ancestry, ownership, executable paths, arguments, sockets, service relationships, timing, and business purpose.
