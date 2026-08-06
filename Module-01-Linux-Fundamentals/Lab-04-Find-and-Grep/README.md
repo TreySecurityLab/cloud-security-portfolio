@@ -1,140 +1,55 @@
 # Find and Grep
 
-## Project Overview
+## Project Summary
 
-This lab documents a controlled Linux search and threat-hunting exercise using `find` and `grep`. The investigation focused on locating files by metadata, filtering file-system results with logical expressions, searching file contents with exact and regular-expression matching, reducing false positives, and preserving evidence.
+This project documents a controlled Linux search and threat-hunting exercise using `find` and `grep`. The investigation focused on locating files by metadata, combining logical search conditions, searching file contents with exact and regular-expression matching, reducing false positives, correlating file and content results, and preserving evidence integrity.
 
-## Lab Environment
+## Environment
 
 | System | Hostname | Username | IP Address | Role |
 |---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Investigation target |
+| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Search and investigation target |
 
-**Virtualization platform:** VMware Workstation Pro  
-**VMware network:** Host-only
-
-## Objective
-
-- Locate files by type, name, path, size, owner, permissions, and timestamps.
-- Combine `find` expressions using AND, OR, and NOT logic.
-- Search file contents recursively with `grep`.
-- Compare substring, word-aware, fixed-string, and regular-expression searches.
-- Include or exclude selected files and directories.
-- Combine `find` and `grep` into a repeatable investigation workflow.
-- Save and verify investigation evidence.
+**Platform:** VMware Workstation Pro using a host-only network
 
 ## Investigation Scenario
 
-A controlled directory named `search-data` was created with configuration files, logs, scripts, archived content, uploads, a hidden file, and an empty file. The data included intentionally weak settings and controlled references to `192.168.50.1` for investigation practice.
+A controlled directory named `search-data` contained configurations, logs, scripts, archived content, uploads, a hidden review note, and an empty file. The data included weak settings, failed-authentication events, and controlled references to `192.168.50.1` for search and false-positive analysis.
 
-No discovered script was executed during the investigation.
+No discovered or untrusted script was executed.
 
-## Hands-on Lab
+## Investigation Workflow
 
-1. Created the Lab 04 workspace and evidence directory.
-2. Built the controlled `search-data` scenario.
-3. Located regular files, directories, and symbolic links.
-4. Searched filenames using case-sensitive and case-insensitive matching.
-5. Filtered results by path, size, age, owner, and permissions.
-6. Combined conditions with AND, OR, and NOT logic.
-7. Formatted output using `find -printf`.
-8. Ran commands against matched files with `find -exec`.
-9. Performed basic, recursive, fixed-string, and extended-expression searches with `grep`.
-10. Compared substring matching with word-aware matching.
-11. Displayed context around matches.
-12. Included and excluded selected file types and directories.
-13. Combined `find` and `grep` to investigate risky settings and network commands.
-14. Saved sanitized evidence.
-15. Documented findings and verified evidence checksums.
-
-## Commands Used
-
-The complete command reference is available in [`commands.md`](commands.md).
+1. Built the controlled `search-data` scenario.
+2. Located files and directories by type, name, case-insensitive name, path, size, age, owner, and permissions.
+3. Combined `find` conditions with AND, OR, and NOT logic.
+4. Formatted file metadata with `find -printf`.
+5. Used `find -exec` to inspect matched files.
+6. Performed recursive, fixed-string, word-aware, contextual, and extended-expression searches with `grep`.
+7. Compared broad substring searches with boundary-aware searches to reduce false positives.
+8. Combined `find` and `grep` to investigate weak configurations and network-tool references.
+9. Collected sanitized findings and verified published artifacts with SHA-256 checksums.
 
 ## Key Findings
 
-1. `application-backup.conf` contained `debug=true`.
-2. `application-backup.conf` contained `remote_access=true`.
-3. `application-backup.conf` contained a lab-only training password.
-4. `diagnostic.sh` contained a `curl` command referencing `192.168.50.1`.
-5. `connectivity-test.sh` contained an `nc` command referencing port `8080`.
-6. `maintenance.sh` was executable and contained a legitimate `rsync` command.
-7. `old-debug.log` was older than seven days.
-8. `empty-upload.tmp` was empty.
-9. `.review-note` was hidden.
-10. A substring search for `nc` could match unrelated words such as `maintenance`.
+- `application-backup.conf` contained `debug=true`, `remote_access=true`, and a lab-only training password.
+- `diagnostic.sh` contained a controlled `curl` command referencing `192.168.50.1`.
+- `connectivity-test.sh` contained an `nc` command referencing TCP port `8080`.
+- `maintenance.sh` was executable and contained a legitimate `rsync` command.
+- `old-debug.log` was older than seven days.
+- `empty-upload.tmp` was empty, and `.review-note` was hidden.
+- A substring search for `nc` could match unrelated text such as `maintenance`.
+- Word-aware and boundary-aware patterns improved signal quality but still required analyst validation.
+- Weak settings and network-tool references were indicators to investigate, not automatic proof of compromise.
 
-## Security Interpretation
+## Selected Commands
 
-A technically correct search match is not automatically a meaningful security finding. Substring searches may produce false positives, while word-aware and boundary-aware patterns can improve signal quality.
-
-Configuration values such as `debug=true`, `remote_access=true`, or password-like strings require validation in context. Commands such as `curl`, `wget`, `nc`, and `ncat` may represent legitimate administration or suspicious behavior depending on ownership, timing, destination, process history, and operational purpose.
-
-## Why This Matters in Cloud Security
-
-These techniques apply directly to:
-
-- Azure Linux virtual machines
-- AWS EC2 instances
-- Google Compute Engine instances
-- Containers
-- Kubernetes nodes
-- Web servers
-- Jump hosts
-- Build agents
-- Incident-response snapshots
-
-Cloud alerts often identify a host, account, path, process, address, or time window. `find` narrows the file-system scope, while `grep` searches the relevant contents.
+The concise command reference is available in [`commands.md`](commands.md). It contains the commands that best demonstrate metadata filtering, logical expressions, formatted output, content searching, false-positive reduction, combined `find` and `grep` workflows, and checksum verification.
 
 ## Skills Demonstrated
 
-- Linux file discovery
-- Metadata filtering
-- Permission-based searching
-- Modification-time analysis
-- Logical `find` expressions
-- Custom `find -printf` formatting
-- `find -exec` usage
-- Recursive content searching
-- Fixed-string searching
-- Extended regular expressions
-- Word-boundary matching
-- Search-scope control
-- False-positive analysis
-- Evidence collection
-- Evidence-integrity verification
+Linux file discovery, metadata filtering, permission and age-based searching, logical `find` expressions, `find -printf`, `find -exec`, recursive content searching, fixed-string matching, extended regular expressions, word-boundary matching, search-scope control, false-positive analysis, evidence collection, and SHA-256 integrity verification.
 
-## Technologies Used
+## Security Relevance
 
-- Ubuntu Server
-- VMware Workstation Pro
-- Bash
-- GNU findutils
-- GNU grep
-- GNU coreutils
-- SHA-256
-
-## Evidence Collected
-
-Evidence guidance is available in [`evidence/README.md`](evidence/README.md).
-
-## Screenshots
-
-The screenshot checklist is available in [`screenshots/README.md`](screenshots/README.md).
-
-## Lessons Learned
-
-- `find` searches file-system metadata; `grep` searches file contents.
-- `-name` is case-sensitive; `-iname` is not.
-- Wildcards passed to `find` should normally be quoted.
-- `-mmin -60` means less than 60 minutes ago.
-- `-mmin +60` means more than 60 minutes ago.
-- Adjacent `find` expressions use AND logic.
-- `-o` provides OR logic.
-- `!` and `-not` exclude matches.
-- Parentheses must be escaped in shell commands.
-- `grep` normally matches substrings.
-- `grep -w` reduces partial-word false positives.
-- `grep -F` performs literal matching.
-- `grep -E` enables extended regular expressions.
-- Empty results are valid investigation outcomes.
+Cloud alerts frequently identify a host, path, account, address, command, or time window. `find` narrows file-system scope using metadata, while `grep` searches relevant contents. Together they support investigations of weak configurations, embedded credentials, suspicious scripts, unauthorized tooling, authentication events, and other host-level indicators across Linux virtual machines, containers, web servers, jump hosts, build agents, and incident-response snapshots.
