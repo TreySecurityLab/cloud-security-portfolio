@@ -1,83 +1,59 @@
 # File Permissions and Integrity
 
-## Project Overview
+## Project Summary
 
-This lab examined Linux ownership and permissions, created a cryptographic file-integrity baseline, simulated unauthorized modification, detected the change, and restored the trusted file.
+This project examined Linux ownership and permissions, created a SHA-256 integrity baseline for a controlled configuration file, simulated an unauthorized modification, detected the change, restored the trusted content, and verified the restored state.
 
-## Lab Environment
+## Environment
 
-- Ubuntu target: `testlab@ubuntu-server`
-- Ubuntu IP: `192.168.50.129`
-- VMware network: `Host-only`
+| System | Hostname | Username | IP Address | Role |
+|---|---|---|---|---|
+| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | File-permissions and integrity target |
 
-## Objective
+**Platform:** VMware Workstation Pro using a host-only network
 
-- Review symbolic and numeric Linux permissions.
-- Restrict access to a sensitive test file.
-- Create a SHA-256 integrity baseline.
-- Simulate an unauthorized modification.
-- Detect and restore the changed file.
-- Verify the restored file against the original checksum.
+## Investigation Scenario
 
-## Hands-on Lab
+A controlled configuration file named `application.conf` contained a training-only database password. The file was restricted to its owner, hashed to establish a trusted baseline, modified by appending `remote_access=true`, and restored after the checksum verification failed.
 
-1. Created a dedicated workspace.
-2. Created a sensitive test configuration file.
-3. Reviewed symbolic and numeric permissions.
-4. Restricted the file to owner read/write access using mode `600`.
-5. Reviewed file metadata.
-6. Created a SHA-256 checksum baseline.
-7. Verified the trusted state.
-8. Appended an unauthorized configuration line.
-9. Detected the change through checksum failure.
-10. Removed the unauthorized line.
-11. Verified the original checksum again.
+The investigation was designed to answer four practical questions:
 
-## Commands Used
+1. Did the file permissions appropriately restrict access?
+2. Could a SHA-256 baseline detect a controlled content change?
+3. Could the trusted content be restored safely?
+4. Would the restored file verify against the original checksum?
 
-The complete command reference is available in [`commands.md`](commands.md).
+## Investigation Workflow
+
+1. Created the controlled configuration file.
+2. Reviewed its initial symbolic permissions and metadata.
+3. Restricted access to owner read and write with mode `600`.
+4. Created a SHA-256 checksum baseline.
+5. Verified the initial trusted state.
+6. Appended an unauthorized configuration line.
+7. Detected the modification through checksum failure.
+8. Removed the unauthorized line.
+9. Reverified the file against the original checksum.
+10. Documented the results and verified published artifacts with SHA-256 checksums.
 
 ## Key Findings
 
-- File permissions reduce unauthorized access.
-- SHA-256 provides a strong file fingerprint.
-- A failed checksum proves the file changed.
-- A checksum does not identify who changed the file.
-- File-integrity monitoring should be combined with logging and auditing.
+- Mode `600` limited the controlled file to owner read and write access.
+- Permissions reduced unauthorized access but did not prove that the file remained unchanged.
+- SHA-256 produced a reproducible fingerprint of the trusted file content.
+- Appending `remote_access=true` caused the original checksum verification to fail.
+- Removing the unauthorized line restored the original checksum result.
+- A failed checksum proved that content changed but did not identify who changed it or why.
+- File-integrity monitoring is strongest when combined with permissions, logging, auditing, and change-management records.
 
-## Why This Matters in Cloud Security
+## Selected Commands
 
-Cloud-hosted Linux systems rely on configuration files, startup scripts, application secrets, and service definitions. Unauthorized changes can create persistence, weaken security, expose secrets, or disable logging.
+The concise command reference is available in [`commands.md`](commands.md). It contains the commands that best demonstrate permission review, mode changes, metadata inspection, checksum creation, controlled tampering, restoration, and integrity verification.
 
 ## Skills Demonstrated
 
-- File permissions
-- Numeric permission modes
-- Ownership and metadata review
-- SHA-256 hashing
-- Integrity verification
-- Controlled tampering simulation
-- Evidence collection
+Linux file-permission analysis, numeric permission modes, metadata review, controlled file creation, SHA-256 hashing, integrity-baseline creation, tampering detection, trusted-content restoration, verification, evidence documentation, and checksum validation.
 
-## Technologies Used
+## Security Relevance
 
-- Ubuntu Server
-- VMware Workstation Pro
-- Bash
-- GNU coreutils
-- SHA-256
-- sed
-
-## Evidence Collected
-
-Evidence guidance is available in [`evidence/README.md`](evidence/README.md).
-
-## Screenshots
-
-The screenshot checklist is available in [`screenshots/README.md`](screenshots/README.md).
-
-## Lessons Learned
-
-- Permissions and integrity checks solve different security problems.
-- A checksum can detect modification but cannot identify the responsible user.
-- Restoring trusted content should be followed by another integrity check.
+Cloud-hosted Linux systems depend on trusted configuration files, startup scripts, service definitions, application settings, and secret-bearing files. Unauthorized changes can weaken controls, enable persistence, expose sensitive information, or disable logging. Permissions help control access, while integrity checks help detect content changes.

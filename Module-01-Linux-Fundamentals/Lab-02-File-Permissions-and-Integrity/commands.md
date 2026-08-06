@@ -1,105 +1,75 @@
-# File Permissions and Integrity Commands
+# File Permissions and Integrity — Selected Commands
 
-### Create the workspace
+This concise reference contains the commands that best represent the Lab 02 workflow. Every terminal command is displayed on one line.
 
-```bash
-mkdir -p /home/testlab/cloud-security-labs/lab-02-file-integrity
-```
+## Create and Inspect the Controlled File
 
-- `mkdir` — Creates directories.
-- `-p` — Creates missing parent directories and avoids errors if they already exist.
-
-### Enter the workspace
+Creates the training configuration file:
 
 ```bash
-cd /home/testlab/cloud-security-labs/lab-02-file-integrity
+printf '%s\n' 'database_password=TrainingOnly123' > application.conf
 ```
 
-- `cd` — Changes the current directory.
-
-### Create the test file
-
-```bash
-echo "database_password=TrainingOnly123" > application.conf
-```
-
-- `echo` — Produces text.
-- `>` — Redirects output and overwrites the destination.
-- `application.conf` — Destination file.
-
-### Review permissions
+Displays the file's symbolic permissions and ownership:
 
 ```bash
 ls -l application.conf
 ```
 
-- `ls` — Lists files.
-- `-l` — Uses long format.
-
-### Restrict permissions
+Restricts the file to owner read and write access:
 
 ```bash
 chmod 600 application.conf
 ```
 
-- `chmod` — Changes permissions.
-- `600` — Owner read/write; group and others no access.
-
-### Review metadata
+Displays detailed file metadata:
 
 ```bash
 stat application.conf
 ```
 
-- `stat` — Displays detailed file metadata.
+## Establish and Test Integrity
 
-### Create the hash baseline
+Creates the SHA-256 integrity baseline:
 
 ```bash
 sha256sum application.conf > application.conf.sha256
 ```
 
-- `sha256sum` — Calculates a SHA-256 hash.
-- `>` — Writes the result to a file.
-
-### Verify the baseline
+Verifies the initial trusted state:
 
 ```bash
 sha256sum -c application.conf.sha256
 ```
 
-- `-c` — Checks files against stored checksums.
-
-### Simulate unauthorized modification
+Appends the controlled unauthorized setting:
 
 ```bash
-echo "remote_access=true" >> application.conf
+printf '%s\n' 'remote_access=true' >> application.conf
 ```
 
-- `>>` — Appends output without overwriting existing content.
-
-### Detect the change
+Runs the integrity check that should report `FAILED` after modification:
 
 ```bash
 sha256sum -c application.conf.sha256
 ```
 
-Expected result: `FAILED`
-
-### Restore the file
+Removes the controlled unauthorized line:
 
 ```bash
 sed -i '/remote_access=true/d' application.conf
 ```
 
-- `sed` — Stream editor.
-- `-i` — Edits the file in place.
-- `/remote_access=true/d` — Deletes matching lines.
-
-### Verify the restored file
+Verifies that the restored file matches the original baseline:
 
 ```bash
 sha256sum -c application.conf.sha256
 ```
 
-Expected result: `OK`
+## Verify Evidence
+
+Verifies the final evidence checksum manifest:
+
+```bash
+cd evidence && sha256sum -c evidence-checksums.sha256
+```
