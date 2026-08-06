@@ -1,131 +1,89 @@
-# Security Baseline Commands
+# Security Baseline — Selected Commands
 
-## Ubuntu Server
+This concise reference contains the commands that best represent the Lab 01 baseline. Run Ubuntu commands on `ubuntu-server` and Kali commands on `kali-attacker`. Every terminal command is displayed on one line.
 
-### Display the hostname
+## Confirm the Ubuntu System
+
+Displays the configured hostname:
 
 ```bash
 hostname
 ```
 
-- `hostname` — Displays the system's configured hostname.
-
-### Display the current user
+Displays the user associated with the current shell:
 
 ```bash
 whoami
 ```
 
-- `whoami` — Displays the username associated with the current shell.
-
-### Display IP addresses
+Displays the server's IP-address configuration:
 
 ```bash
 ip address show
 ```
 
-- `ip` — Linux networking utility.
-- `address` — Selects IP address information.
-- `show` — Displays the current configuration.
+## Review Local Exposure and Controls
 
-### Display listening TCP and UDP sockets
+Displays listening TCP and UDP sockets with owning-process information:
 
 ```bash
 sudo ss -tulnp
 ```
 
-- `sudo` — Runs the command with administrative privileges.
-- `ss` — Displays socket information.
-- `-t` — Shows TCP sockets.
-- `-u` — Shows UDP sockets.
-- `-l` — Shows listening sockets.
-- `-n` — Shows numerical addresses and ports.
-- `-p` — Shows the process using each socket.
-
-### Review Apache
+Reviews Apache service state without opening a pager:
 
 ```bash
 sudo systemctl status apache2 --no-pager
 ```
 
-- `systemctl` — Manages and inspects systemd services.
-- `status` — Shows the current service state.
-- `apache2` — Ubuntu's Apache service.
-- `--no-pager` — Prints output directly.
-
-### Review SSH
+Reviews SSH service state without opening a pager:
 
 ```bash
 sudo systemctl status ssh --no-pager
 ```
 
-- `ssh` — Ubuntu's OpenSSH service.
-
-### Review UFW
+Reviews the UFW firewall status and configured rules:
 
 ```bash
 sudo ufw status verbose
 ```
 
-- `ufw` — Ubuntu's Uncomplicated Firewall utility.
-- `status` — Displays current status and rules.
-- `verbose` — Shows additional details.
-
-### Review authentication activity
+Searches the Ubuntu authentication log for accepted, failed, and invalid-user events:
 
 ```bash
 sudo grep -Ei "accepted|failed|invalid" /var/log/auth.log
 ```
 
-- `grep` — Searches text.
-- `-E` — Enables extended regular expressions.
-- `-i` — Ignores letter case.
-- `accepted|failed|invalid` — Matches any listed pattern.
-- `/var/log/auth.log` — Ubuntu authentication log.
+## Validate Remote Exposure from Kali
 
-## Kali Linux
-
-### Test connectivity
+Tests basic reachability to the Ubuntu Server:
 
 ```bash
 ping -c 4 192.168.50.129
 ```
 
-- `ping` — Sends ICMP Echo Requests.
-- `-c 4` — Sends four packets.
-- `192.168.50.129` — Ubuntu Server target.
-
-### Perform a default scan
-
-```bash
-nmap 192.168.50.129
-```
-
-- `nmap` — Network Mapper.
-- `192.168.50.129` — Ubuntu target address.
-
-### Detect service versions
+Performs service-version detection against the Ubuntu Server:
 
 ```bash
 nmap -sV 192.168.50.129
 ```
 
-- `-sV` — Probes open ports to identify services and versions.
-
-### Scan expected ports
+Scans the expected SSH and HTTP ports:
 
 ```bash
 nmap -p 22,80 192.168.50.129
 ```
 
-- `-p` — Specifies ports.
-- `22,80` — SSH and HTTP ports.
-
-### Save the Nmap scan
+Saves a human-readable service scan:
 
 ```bash
 nmap -sV 192.168.50.129 -oN nmap-service-scan.txt
 ```
 
-- `-oN` — Saves normal human-readable output.
-- `nmap-service-scan.txt` — Destination file.
+## Verify Evidence
+
+Verifies the final evidence checksum manifest:
+
+```bash
+cd evidence && sha256sum -c evidence-checksums.sha256
+```
