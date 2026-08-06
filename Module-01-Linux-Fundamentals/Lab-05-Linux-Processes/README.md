@@ -51,26 +51,6 @@ The investigation was designed to answer five practical questions:
 
 The concise command reference is available in [`commands.md`](commands.md). It contains the commands that best demonstrate process triage, executable validation, signal handling, socket attribution, service correlation, priority analysis, and checksum verification.
 
-## Evidence
-
-Published evidence belongs in [`evidence/`](evidence/). The core public evidence set includes an investigation report and SHA-256 checksum manifest. Additional sanitized artifacts may be added when they strengthen the documented findings.
-
-Recommended evidence set:
-
-- `process-tree.txt`
-- `process-analysis.txt`
-- `listener-attribution.txt`
-- `service-and-priority-analysis.txt`
-- `challenge-analysis.txt`
-- `investigation-report.md`
-- `evidence-checksums.sha256`
-
-Before publication, evidence must be reviewed for credentials, tokens, cookies, sensitive paths, unrelated processes, and unnecessary network information.
-
-## Screenshots
-
-Selected screenshots belong in [`screenshots/`](screenshots/). Strong screenshots should show the process tree, focused suspect metadata, executable validation, stopped and resumed states, listener attribution, service correlation, challenge assessment, and final checksum verification.
-
 ## Skills Demonstrated
 
 Linux process triage, PID and PPID analysis, process-state interpretation, `/proc` investigation, executable-path validation, process-tree reconstruction, signal handling, safe process control, priority analysis, systemd correlation, network-listener attribution, false-positive analysis, evidence documentation, and SHA-256 integrity verification.
