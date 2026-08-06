@@ -31,3 +31,4 @@ This repository documents a structured, hands-on Cloud Security Academy focused 
 - [x] Lab 01 — Security Baseline
 - [x] Lab 02 — File Permissions and Integrity
 - [x] Lab 03 — Linux File System Investigation
+- [x] Lab 04 — Find and Grep
