@@ -124,26 +124,6 @@ Reviews controlled-service hardening:
 systemd-analyze security lab-heartbeat.service --no-pager
 ```
 
-## Challenge Service Attribution
-
-Displays challenge-service properties:
-
-```bash
-systemctl show cloud-metrics-cache -p Id -p Description -p LoadState -p ActiveState -p SubState -p UnitFileState -p MainPID -p User -p Group -p WorkingDirectory -p ExecStart -p Restart -p RestartUSec -p NoNewPrivileges -p PrivateTmp -p FragmentPath
-```
-
-Correlates TCP port `9195` with its listening process:
-
-```bash
-sudo ss -ltnp | grep -F ':9195'
-```
-
-Locates the challenge enablement link:
-
-```bash
-find /etc/systemd/system -type l -lname '*cloud-metrics-cache.service' -ls
-```
-
 ## Hash and Verify Evidence
 
 Hashes the retained controlled script and unit-file copy:
