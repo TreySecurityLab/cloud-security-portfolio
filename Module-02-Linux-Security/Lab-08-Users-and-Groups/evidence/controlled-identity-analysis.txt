@@ -1,0 +1,10 @@
+
+===== Controlled account identity records =====
+lab08-backup:x:1001:1002::/home/lab08-backup:/bin/bash
+lab08-service:x:1002:1003::/home/lab08-service:/usr/sbin/nologin
+
+
+===== Controlled account group memberships =====
+uid=1001(lab08-backup) gid=1002(lab08-backup) groups=1002(lab08-backup),1001(cloud-audit)
+uid=1002(lab08-service) gid=1003(lab08-service) groups=1003(lab08-service)
+

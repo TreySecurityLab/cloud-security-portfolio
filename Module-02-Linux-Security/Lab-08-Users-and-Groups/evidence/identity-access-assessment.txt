@@ -1,0 +1,4 @@
+
+===== Identity and access assessment =====
+Assessment: The controlled backup operator requires cloud-audit membership and retains that authorization. The controlled service identity uses /usr/sbin/nologin and does not require cloud-audit membership. Excessive supplemental-group access assigned to lab08-service was detected through group inspection and removed. Final verification confirms the intended role-based access model.
+

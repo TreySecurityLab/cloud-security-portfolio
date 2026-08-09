@@ -1,0 +1,8 @@
+
+===== Excessive cloud-audit membership before remediation =====
+cloud-audit:x:1001:lab08-backup,lab08-service
+
+
+===== Corrected cloud-audit membership after remediation =====
+cloud-audit:x:1001:lab08-backup
+
