@@ -1,0 +1,5 @@
+
+===== Final authorization state =====
+Mode=-rw-r----- Octal=640 Owner=testlab Group=cloud-audit File=/home/testlab/cloud-security-labs/lab-09-file-ownership-and-permissions/scenario/cloud-audit-report.txt
+Mode=drwxr-x--- Octal=750 Owner=testlab Group=cloud-audit File=/home/testlab/cloud-security-labs/lab-09-file-ownership-and-permissions/scenario/audit-archive
+

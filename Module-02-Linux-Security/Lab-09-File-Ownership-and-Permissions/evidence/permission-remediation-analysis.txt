@@ -1,0 +1,8 @@
+
+===== Permissions before remediation =====
+Mode=-rw-r--r-- Octal=644 Owner=testlab Group=testlab File=/home/testlab/cloud-security-labs/lab-09-file-ownership-and-permissions/scenario/cloud-audit-report.txt
+
+
+===== Permissions after remediation =====
+Mode=-rw-r----- Octal=640 Owner=testlab Groupcloud-audit File=/home/testlab/cloud-security-labs/lab-09-file-ownership-and-permissions/scenario/cloud-audit-report.txt
+
