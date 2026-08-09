@@ -20,5 +20,5 @@ This module establishes the Linux knowledge required for Cloud Security administ
 - [Lab 03 — Linux File System Investigation](Lab-03-Linux-File-System-Investigation/)
 - [Lab 04 — Find and Grep](Lab-04-Find-and-Grep/)
 - [Lab 05 — Linux Processes](Lab-05-Linux-Processes/)
-- Lab 06 — System Logs
-- Lab 07 — Module Capstone
+- [Lab 06 - Linux Services and systemd](Lab-06-Linux-Services-and-systemd/)
+- [Lab 07 - Module Capstone - Linux Security Investigation](Lab-07-Module-Capstone/)
