@@ -1,0 +1,25 @@
+=== PERMITTED COMMAND ===
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-08-10 17:20:15 UTC; 1h 36min ago
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 1102 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 1140 (sshd)
+      Tasks: 1 (limit: 9374)
+     Memory: 6.8M (peak: 8.0M)
+        CPU: 229ms
+     CGroup: /system.slice/ssh.service
+             └─1140 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Aug 10 17:20:15 ubuntu-server systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Aug 10 17:20:15 ubuntu-server sshd[1140]: Server listening on 0.0.0.0 port 22.
+Aug 10 17:20:15 ubuntu-server sshd[1140]: Server listening on :: port 22.
+Aug 10 17:20:15 ubuntu-server systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Aug 10 17:20:37 ubuntu-server sshd[1480]: Accepted password for testlab from 192.168.50.1 port 50426 ssh2
+Aug 10 17:20:37 ubuntu-server sshd[1480]: pam_unix(sshd:session): session opened for user testlab(uid=1000) by testlab(uid=0)
+Aug 10 18:12:41 ubuntu-server sshd[2043]: Accepted password for testlab from 192.168.50.1 port 36870 ssh2
+Aug 10 18:12:41 ubuntu-server sshd[2043]: pam_unix(sshd:session): session opened for user testlab(uid=1000) by testlab(uid=0)
+=== DENIED COMMAND ===
+sudo: a password is required

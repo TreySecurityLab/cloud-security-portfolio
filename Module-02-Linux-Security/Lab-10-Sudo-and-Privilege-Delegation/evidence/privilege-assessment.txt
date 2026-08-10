@@ -1,0 +1,8 @@
+Finding: Excessive sudo authorization
+Identity: lab10-operator
+Initial state: NOPASSWD ALL root commands
+Risk: unrestricted administrative command execution
+Required state: SSH service status only
+Remediation: replaced ALL with /usr/bin/systemctl status ssh
+Validation: approved command permitted; unrelated root command denied
+Assessment: least-privilege requirement satisfied
