@@ -28,4 +28,5 @@ This repository documents structured, hands-on Cloud Security Lab Exercises focu
 
 ## Completed Modules
 
-[x] [Module 01 - Linux Fundamentals](Module-01-Linux-Fundamentals/)
+✅ [Module 01 — Linux Fundamentals](Module-01-Linux-Fundamentals/)
+
