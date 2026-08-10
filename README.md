@@ -26,10 +26,6 @@ This repository documents structured, hands-on Cloud Security Lab Exercises focu
 10. [Module 10 — Incident Response](Module-10-Incident-Response/)
 11. [Module 11 — Final Capstone](Module-11-Final-Capstone/)
 
-## Current Progress
+## Module Progress
 
-- [x] Lab 01 — Security Baseline
-- [x] Lab 02 — File Permissions and Integrity
-- [x] Lab 03 — Linux File System Investigation
-- [x] Lab 04 — Find and Grep
-- [x] Lab 05 — Linux Processes
+- [Module 01 - Linux Fundamentals](Module-01-Linux-Fundamentals/)
