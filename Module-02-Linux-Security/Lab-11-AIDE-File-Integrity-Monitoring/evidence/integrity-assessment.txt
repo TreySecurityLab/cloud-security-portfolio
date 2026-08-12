@@ -1,0 +1,9 @@
+Lab 11 File Integrity Assessment
+Baseline state: trusted
+Detected conditions: one changed file, one removed file, one added file
+Changed file: application.conf
+Removed file: startup.conf
+Added file: persistence.conf
+AIDE detection status: 7
+Remediation: restored trusted files and removed unauthorized file
+Final AIDE state: no differences detected

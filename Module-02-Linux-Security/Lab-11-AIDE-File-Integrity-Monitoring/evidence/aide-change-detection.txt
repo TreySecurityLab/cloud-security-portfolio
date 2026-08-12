@@ -1,0 +1,63 @@
+Start timestamp: 2026-08-12 19:30:19 +0000 (AIDE 0.18.6)
+AIDE found differences between database and filesystem!!
+
+Summary:
+  Total number of entries:	3
+  Added entries:		1
+  Removed entries:		1
+  Changed entries:		1
+
+---------------------------------------------------
+Added entries:
+---------------------------------------------------
+
+f+++++++++++++++++: /home/testlab/cloud-security-labs/lab-11-aide-file-integrity-monitoring/monitored/persistence.conf
+
+---------------------------------------------------
+Removed entries:
+---------------------------------------------------
+
+f-----------------: /home/testlab/cloud-security-labs/lab-11-aide-file-integrity-monitoring/monitored/startup.conf
+
+---------------------------------------------------
+Changed entries:
+---------------------------------------------------
+
+f > ...     H     : /home/testlab/cloud-security-labs/lab-11-aide-file-integrity-monitoring/monitored/application.conf
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+File: /home/testlab/cloud-security-labs/lab-11-aide-file-integrity-monitoring/monitored/application.conf
+ Size      : 35                               | 47
+ SHA256    : aofOEfQWAcJGJBZJFDmbYxW0ljPaMvGN | Nm+LxYwcW3zvt36+vmeO2BtIWi9HXiBY
+             7K+H20jcbpk=                     | InSeC3ewHuQ=
+
+
+---------------------------------------------------
+The attributes of the (uncompressed) database(s):
+---------------------------------------------------
+
+/home/testlab/cloud-security-labs/lab-11-aide-file-integrity-monitoring/aide/aide.db
+ MD5       : FOx/jDBu8pg8xb6o+ZQTkg==
+ SHA1      : uFlESpHqGiy9cI7I4HzwzYXlDIc=
+ SHA256    : vvCTVmpWXUh+HbaGCJjeXlBmnlrF2+Jp
+             81ePnx2OmQg=
+ SHA512    : i/oO1RcOU1c+ZAkCwiARoefV4y/ocXCe
+             ULph8CC5k8beoOEWrO16uKK27wf7QN3D
+             GV7VNI12DA/z7QmXt5f5jA==
+ RMD160    : TTJnOvxpDs7oBA0J6O9q5e0UOr0=
+ TIGER     : hBggMyUyc6YHhB/0dblSAzULWBEJ8+cK
+ CRC32     : kr5FFQ==
+ CRC32B    : RbO4Sg==
+ HAVAL     : PYhLl4Drb4p2kWCKOqOIlhv/nDrYnyjd
+             /TzkIsklEsQ=
+ WHIRLPOOL : G8lip4rjQHDT/sB0dkQ4NPpPcT1ZuEnv
+             VjvXxl2Rn2kMv7NJ5jjap1n+0MyIJpi1
+             V2IO5j65JN90mH/t1P+ITA==
+ GOST      : B/5YxyvJoIerX4uMxjDSiBA0Zx7doBD3
+             R7JMl9nsWgc=
+
+
+End timestamp: 2026-08-12 19:30:19 +0000 (run time: 0m 0s)

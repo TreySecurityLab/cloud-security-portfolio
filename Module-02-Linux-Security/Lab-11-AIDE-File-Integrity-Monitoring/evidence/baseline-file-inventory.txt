@@ -1,0 +1,3 @@
+application.conf mode=664 owner=testlab:testlab size=35-bytes
+logging.conf mode=664 owner=testlab:testlab size=31-bytes
+startup.conf mode=664 owner=testlab:testlab size=35-bytes
