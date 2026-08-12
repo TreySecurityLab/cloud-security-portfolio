@@ -7,14 +7,12 @@ This lab implemented host-based file integrity monitoring with AIDE on an Ubuntu
 ## Skills Demonstrated
 
 - Installed and validated AIDE from Ubuntu package repositories.
-- Built a scoped AIDE policy for a controlled monitored directory.
-- Monitored permissions, file type, ownership, size, and SHA-256 content hashes.
-- Initialized and promoted a trusted AIDE database.
-- Verified a clean baseline before testing changes.
-- Detected added, removed, and changed files and interpreted AIDE exit status `7`.
-- Remediated the filesystem without rebaselining over unauthorized changes.
-- Verified the restored state against the original trusted database.
-- Preserved investigation evidence and verified its integrity with SHA-256 checksums.
+- Built and validated a scoped AIDE monitoring policy.
+- Established and verified a trusted file-integrity baseline.
+- Detected added, removed, and changed files with AIDE.
+- Interpreted AIDE change findings and exit status `7`.
+- Remediated unauthorized filesystem changes without rebaselining over them.
+- Collected investigation evidence and verified its integrity with SHA-256 checksums.
 
 ## Security Findings
 
@@ -24,7 +22,7 @@ The monitored files were restored to their original trusted contents and the una
 
 ## Evidence
 
-The `evidence/` directory contains the AIDE version record, baseline inventory, initialization output, clean baseline check, change-detection report, captured AIDE exit status, post-remediation check, final integrity assessment, and the SHA-256 evidence manifest produced on the Ubuntu Server. The manifest verifies the listed evidence artifacts and intentionally does not hash itself.
+The `evidence/` directory contains the AIDE version record, baseline inventory, initialization output, clean baseline check, change-detection report, captured AIDE exit status, post-remediation check, final integrity assessment, and the SHA-256 integrity manifest produced on the Ubuntu Server.
 
 ## Screenshots
 
