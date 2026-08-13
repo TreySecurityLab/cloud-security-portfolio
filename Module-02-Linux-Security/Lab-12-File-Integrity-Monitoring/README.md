@@ -24,7 +24,7 @@ The investigation was designed to answer five practical questions:
 
 ## Investigation Workflow
 
-1. Created the controlled Lab 11 workspace with separate monitored, AIDE, evidence, and scenario directories.
+1. Created the controlled Lab 12 workspace with separate monitored, AIDE, evidence, and scenario directories.
 2. Installed AIDE from the configured Ubuntu repositories and recorded the installed version and supported features.
 3. Created trusted application, startup, and logging configuration files and documented their initial filesystem metadata.
 4. Built a scoped AIDE configuration that monitored permissions, file type, ownership, size, and SHA-256 content hashes.
@@ -49,7 +49,7 @@ The investigation was designed to answer five practical questions:
 
 ## Selected Commands
 
-The concise command reference is available in [`commands.md`](https://github.com/TreySecurityLab/cloud-security-portfolio/blob/main/Module-02-Linux-Security/Lab-11-AIDE-File-Integrity-Monitoring/commands.md). It contains the commands that best demonstrate AIDE installation and validation, integrity-policy construction, baseline initialization, clean-state verification, controlled filesystem changes, change detection, exit-status capture, remediation validation, and evidence verification.
+The concise command reference is available in [`commands.md`](https://github.com/TreySecurityLab/cloud-security-portfolio/blob/main/Module-02-Linux-Security/Lab-12-File-Integrity-Monitoring/commands.md). It contains the commands that best demonstrate AIDE installation and validation, integrity-policy construction, baseline initialization, clean-state verification, controlled filesystem changes, change detection, exit-status capture, remediation validation, and evidence verification.
 
 ## Skills Demonstrated
 

@@ -1,4 +1,0 @@
-
-===== Permission assessment =====
-Assessment: cloud-audit-report.txt was configured with mode 644, allowing lab08-service to read a resource for which it had no documented requirement. Ownership was aligned to testlab:cloud-audit and the file was remediated to mode 640. Authorized group access remained functional while lab08-service access was denied. The audit-archive directory was configured as 750 to permit owner access and authorized group traversal while denying other access.
-

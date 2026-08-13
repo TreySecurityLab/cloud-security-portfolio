@@ -14,7 +14,6 @@ This module builds practical Linux security administration and investigation ski
 
 ## Labs
 
-- [Lab 08 — Users and Groups](Lab-08-Users-and-Groups/)
-- [Lab 09 — File Ownership and Permissions](Lab-09-File-Ownership-and-Permissions/)
-- [Lab 10 — Sudo, Privilege Delegation, and Least Privilege](Lab-10-Sudo-and-Privilege-Delegation/)
-- [Lab 11 — AIDE File Integrity Monitoring and Change Detection](Lab-11-AIDE-File-Integrity-Monitoring/)
+- [Lab 08 — Users, Groups & Privilege Management](Lab-08-Users-and-Groups/)
+- [Lab 09 — Sudo & Least Privilege](Lab-09-Sudo-and-Least-Privilege/)
+- [Lab 12 — File Integrity Monitoring](Lab-12-File-Integrity-Monitoring/)
