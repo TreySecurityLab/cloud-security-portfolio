@@ -1,0 +1,3 @@
+Finding: pam_permit.so with the sufficient control flag bypassed password verification in the isolated lab service.
+Remediation: the bypass rule was removed and replaced with required pam_unix.so authentication and account checks.
+Validation: the correct password succeeded, the incorrect password failed, and the account-management check succeeded.

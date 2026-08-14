@@ -1,0 +1,2 @@
+pamtester: successfully authenticated
+pamtester_exit=0

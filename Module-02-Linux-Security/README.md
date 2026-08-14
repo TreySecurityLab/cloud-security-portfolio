@@ -16,4 +16,5 @@ This module builds practical Linux security administration and investigation ski
 
 - [Lab 08 — Users, Groups & Privilege Management](Lab-08-Users-and-Groups/)
 - [Lab 09 — Sudo & Least Privilege](Lab-09-Sudo-and-Least-Privilege/)
+- [Lab 10 — PAM Authentication](Lab-10-PAM-Authentication/)
 - [Lab 12 — File Integrity Monitoring](Lab-12-File-Integrity-Monitoring/)
