@@ -1,6 +1,6 @@
 # Cybersecurity Portfolio
 
-This repository documents structured, hands-on Cloud Security Lab Exercises focused on Linux security, networking, offensive security, detection, forensics, Azure, Microsoft Defender, Microsoft Sentinel, and incident response.
+This repository documents structured, hands-on Cybersecurity lab exercises focused on Linux security, networking, offensive security, detection, forensics, Azure, Microsoft Defender, Microsoft Sentinel, and incident response.
 
 ## Lab Environment
 
