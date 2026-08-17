@@ -6,9 +6,9 @@ This project examined Linux ownership and permissions, created a SHA-256 integri
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | File-permissions and integrity target |
+| System | Role |
+|---|---|
+| Ubuntu Server | File-permissions and integrity target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 
