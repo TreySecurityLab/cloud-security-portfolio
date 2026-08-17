@@ -8,9 +8,9 @@ The scenario used a controlled monitored directory containing trusted applicatio
 
 ## Environment
 
-| System | Hostname | Username | Role |
-| --- | --- | --- | --- |
-| Ubuntu Server | `ubuntu-server` | `testlab` | Linux file-integrity monitoring and change-detection investigation target |
+| System | Role |
+| --- | --- |
+| Ubuntu Server | Linux file-integrity monitoring and change-detection investigation target |
 
 ## Investigation Scenario
 
