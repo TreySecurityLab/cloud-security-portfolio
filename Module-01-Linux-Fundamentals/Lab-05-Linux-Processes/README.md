@@ -8,9 +8,9 @@ The scenario included a process whose displayed argument was intentionally chang
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Process-investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Process-investigation target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 
