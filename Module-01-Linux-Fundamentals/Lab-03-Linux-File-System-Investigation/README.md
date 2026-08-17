@@ -6,9 +6,9 @@ This project documents a controlled Linux file-system investigation on an Ubuntu
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | File-system investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | File-system investigation target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 

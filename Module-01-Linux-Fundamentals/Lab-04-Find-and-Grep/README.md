@@ -6,9 +6,9 @@ This project documents a controlled Linux search and threat-hunting exercise usi
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Search and investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Search and investigation target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 

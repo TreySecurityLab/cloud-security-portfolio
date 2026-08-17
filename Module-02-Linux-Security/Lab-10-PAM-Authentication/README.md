@@ -6,9 +6,9 @@ The scenario used a controlled `lab10-pam-user` identity and an isolated `/etc/p
 
 ## Environment
 
-| System | Hostname | Username | Role |
-| --- | --- | --- | --- |
-| Ubuntu Server | `ubuntu-server` | `testlab` | Linux PAM authentication investigation target |
+| System | Role |
+| --- | --- |
+| Ubuntu Server | Linux PAM authentication investigation target |
 
 ## Investigation Scenario
 

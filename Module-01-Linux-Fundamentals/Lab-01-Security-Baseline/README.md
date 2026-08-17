@@ -8,10 +8,10 @@ Only systems used in the completed lab are listed below.
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Kali Linux | `kali-attacker` | `treyc` | `192.168.50.1` | Remote scanner |
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Baseline target |
+| System | Role |
+|---|---|
+| Kali Linux | Remote scanner |
+| Ubuntu Server | Baseline target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 

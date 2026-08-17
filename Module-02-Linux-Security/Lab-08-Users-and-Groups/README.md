@@ -8,9 +8,9 @@ The scenario created a controlled interactive backup operator, a noninteractive 
 
 ## Environment
 
-| System | Hostname | Username | Role |
-|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | Linux identity and access-control target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Linux identity and access-control target |
 
 ## Investigation Scenario
 
