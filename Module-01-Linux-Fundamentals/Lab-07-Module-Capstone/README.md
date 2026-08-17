@@ -8,9 +8,9 @@ The scenario included a deliberately modified application configuration and a co
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Linux security investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Linux security investigation target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 
