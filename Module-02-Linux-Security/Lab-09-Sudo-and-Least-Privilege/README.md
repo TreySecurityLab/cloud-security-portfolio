@@ -8,9 +8,9 @@ The scenario used a controlled `lab10-operator` identity that was deliberately g
 
 ## Environment
 
-| System | Hostname | Username | Role |
-|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | Linux sudo and privilege-delegation investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Linux sudo and privilege-delegation investigation target |
 
 ## Investigation Scenario
 
