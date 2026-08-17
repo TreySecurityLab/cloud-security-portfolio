@@ -8,9 +8,9 @@ The scenario included investigation of the legitimate SSH service, creation of a
 
 ## Environment
 
-| System | Hostname | Username | IP Address | Role |
-|---|---|---|---|---|
-| Ubuntu Server | `ubuntu-server` | `testlab` | `192.168.50.129` | Service-investigation target |
+| System | Role |
+|---|---|
+| Ubuntu Server | Service-investigation target |
 
 **Platform:** VMware Workstation Pro using a host-only network
 
