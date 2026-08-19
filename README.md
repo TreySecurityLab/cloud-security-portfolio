@@ -16,7 +16,6 @@ The lab is built as a segmented cybersecurity environment supporting enterprise 
 | Redteam Host | Kali Linux | 16 GB | Dedicated offensive security and penetration-testing workstation |
 | SW-Lab-01 | Aruba J9774A | — | Managed Layer 2 switch providing VLAN segmentation and traffic mirroring |
 | opnsense-fw | OPNsense | 8 GB | Bare-metal firewall providing routing, VLAN gateways, filtering, and network security |
-| Wireless Router | TP-Link Archer AXE75 | — | Provides upstream network and wireless connectivity |
 
 ### Enterprise Virtualization Host
 
