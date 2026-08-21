@@ -1,66 +1,83 @@
 # Lab Documentation Standard — LOCKED
 
-This file defines the exact portfolio README structure and content pattern to use for every future Cloud Security Lab Exercises lab.
+## Purpose
 
-Do not change, reinterpret, optimize, add, remove, rename, or reorder this structure unless the user explicitly requests a README format change.
+This standard controls the portfolio-facing documentation structure and presentation for every Cloud Security Lab Exercise. It does not control where a lab runs, which systems execute it, network placement, local filesystem paths, or infrastructure readiness.
 
-Only lab-specific technical content may change.
+Do not change, reinterpret, optimize, add, remove, rename, or reorder the required README sections unless the user explicitly authorizes a documentation-format change. Only lab-specific technical content may change.
+
+## Scope Boundary
+
+This standard controls:
+
+- README section names and order;
+- the `System` and `Role` format used in the Environment section;
+- portfolio-facing summaries, scenarios, workflows, findings, commands, skills, and security relevance;
+- screenshot selection and presentation;
+- checksum presentation and evidence-integrity statements; and
+- publication-ready documentation quality.
+
+The separate **Lab Environment & Execution Standard — Lab 11+** controls execution systems, infrastructure roles, IP/VLAN placement, local paths, evidence collection locations, operational prerequisites, and retrieval source paths. An execution-standard change does not authorize a README-format change, and a documentation-standard change does not authorize an infrastructure or path change.
+
+## Required README Section Order
+
+1. Project Summary
+2. Environment
+3. Investigation Scenario
+4. Investigation Workflow
+5. Key Findings
+6. Selected Commands
+7. Skills Demonstrated
+8. Security Relevance
 
 ## Project Summary
 
-This project documents a controlled Linux sudo and privilege-delegation investigation on an Ubuntu Server. The work focused on effective sudo authorization, dedicated `/etc/sudoers.d/` policy fragments, unrestricted root delegation, least-privilege remediation, positive and negative authorization testing, and SHA-256 evidence integrity.
-
-The scenario used a controlled `lab10-operator` identity that was deliberately granted excessive `NOPASSWD: ALL` authorization even though its documented role required only permission to view SSH service status. The sudoers policy was then remediated to permit only `/usr/bin/systemctl status ssh`, preserving the approved administrative task while denying unrelated root-level commands.
+Summarize the lab-specific investigation, its primary security objective, the controlled scenario, the validation performed, and the final security outcome. Do not reuse another lab's scenario or technical details.
 
 ## Environment
 
+Use only `System` and `Role`. Do not publish hostname, username, IP address, secrets, or other unnecessary identifiers in this table.
+
 | System | Role |
 | --- | --- |
-| Ubuntu Server | Linux sudo and privilege-delegation investigation target |
+| Lab-specific system type | Lab-specific role in the investigation |
 
 ## Investigation Scenario
 
-The investigation was designed to answer five practical questions:
-
-1. What sudo privileges are currently available to the controlled operator identity?
-2. Does unrestricted `NOPASSWD: ALL` authorization exceed the operator's documented business requirement?
-3. What security impact results when an identity can execute unrelated commands as root?
-4. Can the sudoers policy be reduced to one explicitly approved command without removing required access?
-5. Do positive and negative authorization tests confirm the final least-privilege state?
+Describe the controlled security problem and the practical questions the investigation must answer. Keep the scenario aligned with the canonical lab objective.
 
 ## Investigation Workflow
 
-1. Reviewed the current administrative identity and documented the intended `lab10-operator` role and approved SSH service-status command.
-2. Created the controlled noninteractive operator identity and verified its passwd record.
-3. Created a dedicated `/etc/sudoers.d/lab10-operator` policy fragment and validated its syntax with `visudo`.
-4. Deliberately configured unrestricted passwordless sudo authorization and preserved the resulting effective privileges as evidence.
-5. Demonstrated the security impact by validating that the controlled operator could execute an unrelated root-level identity command.
-6. Replaced the excessive rule with a narrowly scoped authorization for `/usr/bin/systemctl status ssh` only.
-7. Revalidated the sudoers fragment and captured the remediated effective authorization state.
-8. Performed a positive test confirming the approved SSH status command remained authorized.
-9. Performed a negative test confirming the unrelated `/usr/bin/id` root command was denied.
-10. Documented the final privilege assessment and verified the retained evidence with the SHA-256 checksum manifest.
+Provide a concise numbered account of the work actually performed. Preserve the order of investigation, validation, remediation, positive testing, negative testing, evidence collection, and integrity verification when those activities apply.
+
+Do not present planned, skipped, or unverified work as completed.
 
 ## Key Findings
 
-- `sudo -l` provided the effective sudo authorization view needed to compare actual privilege with the documented requirement.
-- `NOPASSWD: ALL` granted the controlled operator unrestricted passwordless root-command execution and exceeded the intended role.
-- A dedicated file under `/etc/sudoers.d/` provided a focused policy location that could be validated independently with `visudo -cf`.
-- The excessive rule allowed an unrelated root-level `/usr/bin/id` command, demonstrating that broad sudo delegation creates a direct privilege-escalation path.
-- Restricting the policy to `/usr/bin/systemctl status ssh` preserved the required administrative task without retaining unrestricted root access.
-- Positive testing confirmed the approved SSH service-status command remained available after remediation.
-- Negative testing confirmed the unrelated root-level identity command was denied after remediation.
-- Effective authorization testing provided stronger validation than inspecting sudoers text alone.
-- The final evidence checksum verification confirmed that the retained investigation artifacts had not changed after collection.
+State the lab-specific technical conclusions supported by retained evidence. Distinguish observed behavior, security impact, remediation results, and verification outcomes.
 
 ## Selected Commands
 
-The concise command reference is available in [`commands.md`](commands.md). It contains the commands that best demonstrate sudo authorization review, controlled identity creation, sudoers validation, excessive-privilege testing, least-privilege remediation, positive and negative authorization testing, and evidence verification.
+Link to [`commands.md`](commands.md) and briefly describe the command categories it contains. Keep `commands.md` concise and focused on commands that materially demonstrate the investigation.
 
 ## Skills Demonstrated
 
-Linux sudo authorization analysis, privilege-delegation review, `sudo -l` interpretation, controlled account creation, `/etc/sudoers.d/` policy management, `visudo` syntax validation, `NOPASSWD` risk analysis, root-impact validation, least-privilege remediation, command-specific sudo delegation, positive and negative authorization testing, privilege assessment, evidence documentation, and SHA-256 integrity verification.
+List the lab-specific technical and analytical skills demonstrated by the completed work. Do not inflate the list with tools or capabilities that were not used and verified.
 
 ## Security Relevance
 
-Cloud IAM determines which identities can reach a Linux workload, while local sudo policy determines which administrative actions those identities can perform after reaching the operating system. Reliable privilege reviews must compare effective authorization with documented job requirements, validate sudoers syntax, test both permitted and denied behavior, and remove broad delegation that creates unnecessary root-level capability. Least-privilege sudo rules reduce the blast radius of compromised accounts, misconfiguration, and unauthorized administrative activity.
+Explain how the lab's verified findings relate to practical defensive security, cloud security, system administration, identity, networking, monitoring, incident response, or risk reduction as appropriate to the canonical objective.
+
+## Evidence Presentation Rules
+
+- Include only evidence that directly supports the canonical objective, a meaningful defense-in-depth control, remediation, or verification.
+- Captions must state what the evidence demonstrates without exposing sensitive data.
+- Do not claim that a control is operational unless execution evidence verifies it.
+- Present checksum verification accurately; a checksum confirms retained-file integrity, not the truth of an unsupported operational claim.
+- Do not publish passwords, private keys, tokens, domain secrets, public or ISP-assigned WAN information, full MAC addresses, SNMP credentials or community strings, serial numbers, or other sensitive identifiers.
+
+## Change Control
+
+This standard is independently locked from the Lab Environment & Execution Standard — Lab 11+.
+
+Changes to README headings, section order, Environment formatting, evidence presentation, screenshot presentation, checksum presentation, or portfolio-facing writing belong here only. Changes to systems, paths, VLANs, host roles, switch ports, virtualization placement, firewall behavior, evidence collection locations, or retrieval source paths belong only in the execution standard.
